@@ -1,0 +1,12 @@
+import("//build/templates/build_template.gni")
+build_rust("thiserror") {
+  crate_type = "rlib"
+  sources = [ "src/lib.rs" ]
+  edition = "2021"
+  proc_macro_deps = [ "impl:thiserror_impl" ]
+  rustflags = [
+    "--cap-lints=allow",
+    "--cfg",
+    "error_generic_member_access",
+  ]
+}
